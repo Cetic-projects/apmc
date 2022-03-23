@@ -16,8 +16,11 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        $this->call(users::class);
+        // $this->call(users::class);
         Currency::factory()->count(5)->create();
+        User::factory(['email'=>'test@example.com'])->create();
+        User::factory()->count(5)->create();
+
 
 
         if (config('variables.WITH_FAKER')) {

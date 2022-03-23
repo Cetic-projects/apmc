@@ -18,7 +18,7 @@ class User extends Authenticatable
      * @var array<int, string>
      */
     protected $fillable = [
-        'name', 'email', 'password', 'avatar', 'bio', 'role'
+        'first_name','last_name', 'city_id', 'email', 'password', 'phone', 'address'
     ];
 
     /**
@@ -49,9 +49,12 @@ class User extends Authenticatable
     public static function rules($update = false, $id = null)
     {
         $common = [
-            'email'    => "required|email|unique:users,email,$id",
-            'password' => 'nullable|confirmed',
-            'avatar' => 'image',
+            'email'      =>"required|email|unique:users,email,$id",
+            'first_name' =>"required|string|min:4",
+            'last_name'  =>"required|string|min:4",
+            'phone'      =>'nullable|regex:/^([0-9\s\-\+\(\)]*)$/|min:10',
+            'address'    =>'nullable|string',
+            'password'   =>'nullable|confirmed',
         ];
 
         if ($update) {

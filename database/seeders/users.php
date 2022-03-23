@@ -20,24 +20,16 @@ class users extends Seeder
         
         for ($i = 1; $i <= 1 ; $i++) {
             array_push($data, [
-                'name'     => 'hadji kouceyla',
+                'first_name'     => 'nadour',
+                'last_name'     => 'sabrina',
                 'email'    => 'test@example.com',
                 'password' => bcrypt('123456'),
-                'role'     => 10,
-                'bio'      => $faker->realText(),
-            ]);
-        }
-
-        for ($i = 1; $i <= 10 ; $i++) {
-            array_push($data, [
-                'name'     => $faker->name(),
-                'email'    => $faker->email,
-                'password' => bcrypt('123456'),
-                'role'     => 0,
-                'bio'      => $faker->realText(),
+                'address'     => $faker->address(),
+                'phone'     => $faker->phoneNumber(),
             ]);
         }
         
         User::insert($data);
+
     }
 }
