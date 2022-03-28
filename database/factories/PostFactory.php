@@ -3,16 +3,16 @@
 namespace Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
-use App\Models\Posts;
+use App\Models\Post;
 
-class PostsFactory extends Factory
+class PostFactory extends Factory
 {
     /**
      * The name of the factory's corresponding model.
      *
      * @var string
      */
-    protected $model = Posts::class;
+    protected $model = Post::class;
 
     /**
      * Define the model's default state.

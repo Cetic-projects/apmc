@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Posts extends Model
+class Post extends Model
 {
     use HasFactory;
 
@@ -48,6 +48,21 @@ class Posts extends Model
     | Relations
     |------------------------------------------------------------------------------------
     */
+    public function reviews(){
+        return $this->hasMany(Review::class);
+    }
+    public function messages(){
+        return $this->hasMany(Message::class);
+    }
+    public function category(){
+        return $this->belongsTo(Category::class);
+    }
+    public function currency(){
+        return $this->belongsTo(Currency::class);
+    }
+    public function user(){
+        return $this->belongsTo(User::class);
+    }
 
     /*
     |------------------------------------------------------------------------------------

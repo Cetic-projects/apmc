@@ -3,16 +3,16 @@
 namespace Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
-use App\Models\Categories;
+use App\Models\Message;
 
-class CategoriesFactory extends Factory
+class MessageFactory extends Factory
 {
     /**
      * The name of the factory's corresponding model.
      *
      * @var string
      */
-    protected $model = Categories::class;
+    protected $model = Message::class;
 
     /**
      * Define the model's default state.
@@ -22,9 +22,9 @@ class CategoriesFactory extends Factory
     public function definition()
     {
         return [
-            'name' => $this->faker->title(),
-            'description' => $this->faker->paragraph(),
-            'slug' => $this->faker->slug(),
+            'subject' => $this->faker->text(),
+            'message' => $this->faker->paragraph(),
+            'is-read' => $this->faker->boolean(),
         ];
     }
 }

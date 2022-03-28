@@ -3,16 +3,16 @@
 namespace Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
-use App\Models\Reviews;
+use App\Models\Review;
 
-class ReviewsFactory extends Factory
+class ReviewFactory extends Factory
 {
     /**
      * The name of the factory's corresponding model.
      *
      * @var string
      */
-    protected $model = Reviews::class;
+    protected $model = Review::class;
 
     /**
      * Define the model's default state.

@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Reviews extends Model
+class Message extends Model
 {
     use HasFactory;
 
@@ -19,10 +19,9 @@ class Reviews extends Model
     public static function rules($update = false, $id=null)
     {
         return [
-            'rating' =>'nullable',
-            'comment' =>'nullable',
-            'status' =>'nullable',
-        ];
+            'subject' => 'required|string',
+            'message' => 'required|string',
+            'is-read' =>"nullable|boolean",        ];
     }
 
     /*
@@ -30,6 +29,19 @@ class Reviews extends Model
     | Relations
     |------------------------------------------------------------------------------------
     */
+    
+    
+    public function post(){
+        return $this->belongsTo(Post::class);
+    }
+    public function from()
+    {
+        return $this->belongsTo(User::class, 'from_user_id')->withDefault();
+    }
+    public function to()
+    {
+        return $this->belongsTo(User::class, 'to_user_id')->withDefault();
+    }
 
     /*
     |------------------------------------------------------------------------------------

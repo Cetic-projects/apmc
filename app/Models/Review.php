@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Cities extends Model
+class Review extends Model
 {
     use HasFactory;
 
@@ -19,9 +19,9 @@ class Cities extends Model
     public static function rules($update = false, $id=null)
     {
         return [
-            'name' => 'required',
-            'code' => 'required',
-            'state_id' =>"required",
+            'rating' =>'nullable',
+            'comment' =>'nullable',
+            'status' =>'nullable',
         ];
     }
 
@@ -30,6 +30,12 @@ class Cities extends Model
     | Relations
     |------------------------------------------------------------------------------------
     */
+    public function post(){
+        return $this->belongsTo(Post::class);
+    }
+    public function user(){
+        return $this->belongsTo(User::class);
+    }
 
     /*
     |------------------------------------------------------------------------------------

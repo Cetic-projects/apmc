@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Messages extends Model
+class City extends Model
 {
     use HasFactory;
 
@@ -19,9 +19,10 @@ class Messages extends Model
     public static function rules($update = false, $id=null)
     {
         return [
-            'subject' => 'required|string',
-            'message' => 'required|string',
-            'is-read' =>"nullable|boolean",        ];
+            'name' => 'required',
+            'code' => 'required',
+            'state_id' =>"nullable",
+        ];
     }
 
     /*
@@ -29,6 +30,10 @@ class Messages extends Model
     | Relations
     |------------------------------------------------------------------------------------
     */
+    public function users(){
+        return $this->hasMany(User::class);
+    }
+
 
     /*
     |------------------------------------------------------------------------------------
