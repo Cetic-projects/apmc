@@ -2,12 +2,15 @@
 
 namespace Database\Seeders;
 
-use App\Models\Categories;
-use App\Models\Cities;
-use App\Models\Posts;
+use App\Models\AdminMail;
+use App\Models\Banner;
+use App\Models\Category;
+use App\Models\City;
+use App\Models\Post;
 use App\Models\Currency;
-use App\Models\Messages;
-use App\Models\Reviews;
+use App\Models\Message;
+use App\Models\Position;
+use App\Models\Review;
 use App\Models\User;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
@@ -22,12 +25,17 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         // $this->call(users::class);
-        Messages::factory()->count(5)->create();
-        Reviews::factory()->count(5)->create();
-        Posts::factory()->count(5)->create();
-        Categories::factory()->count(5)->create();
+        AdminMail::factory()->count(5)->create();
+        Position::factory()->count(5)->create();
+        Banner::factory()->count(2)->create()->each(function ($banner) {
+            $banner->positions()->attach(Position::factory()->create());
+        });
+        Message::factory()->count(5)->create();
+        Review::factory()->count(5)->create();
+        Post::factory()->count(5)->create();
+        Category::factory()->count(5)->create();
         Currency::factory()->count(5)->create();
-        Cities::factory()->count(5)->create();
+        City::factory()->count(5)->create();
         User::factory(['email'=>'test@example.com'])->create();
         User::factory()->count(5)->create();
 
