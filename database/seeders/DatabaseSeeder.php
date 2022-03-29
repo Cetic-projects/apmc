@@ -14,6 +14,7 @@ use App\Models\Review;
 use App\Models\User;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use Spatie\Permission\Models\Role;
 
 class DatabaseSeeder extends Seeder
 {
@@ -25,6 +26,7 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         // $this->call(users::class);
+        $this->call(role_permission::class);
         AdminMail::factory()->count(5)->create();
         Position::factory()->count(5)->create();
         Banner::factory()->count(2)->create()->each(function ($banner) {
@@ -36,9 +38,7 @@ class DatabaseSeeder extends Seeder
         Category::factory()->count(5)->create();
         Currency::factory()->count(5)->create();
         City::factory()->count(5)->create();
-        User::factory(['email'=>'test@example.com'])->create();
-        User::factory()->count(5)->create();
-
+        User::factory()->create(['first_name'=>'enadir','email'=> 'test@example.com'])->assignRole('super_admin');
 
 
 

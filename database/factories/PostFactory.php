@@ -23,7 +23,7 @@ class PostFactory extends Factory
     {
         return [
             'title' => $this->faker->title(),
-            'description' => $this->faker->paragraph(),
+            'description' => $this->faker->text(),
             'price' => $this->faker->randomDigit(),
             'is_featured' => $this->faker->boolean(),
             'is_negociable' => $this->faker->boolean(),

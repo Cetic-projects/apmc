@@ -18,16 +18,22 @@
             <table id="dataTable" class="table table-striped table-bordered" cellspacing="0" width="100%">
                 <thead>
                     <tr>
-                        <th>Name</th>
+                        <th>First name</th>
+                        <th>Last name</th>
                         <th>Email</th>
+                        <th>Phone number</th>
+                        <th>Address</th>
                         <th>Actions</th>
                     </tr>
                 </thead>
 
                 <tfoot>
                     <tr>
-                        <th>Name</th>
+                        <th>First name</th>
+                        <th>Last name</th>
                         <th>Email</th>
+                        <th>Phone number</th>
+                        <th>Address</th>
                         <th>Actions</th>
                     </tr>
                 </tfoot>
@@ -35,8 +41,12 @@
                 <tbody>
                     @foreach ($items as $item)
                         <tr>
-                            <td><a href="{{ route(ADMIN . '.users.edit', $item->id) }}">{{ $item->name }}</a></td>
+                            <td><a href="{{ route(ADMIN . '.users.edit', $item->id) }}">{{ $item->first_name }}</a></td>
+                            <td>{{ $item->last_name }}</td>
                             <td>{{ $item->email }}</td>
+                            <td>{{ $item->phone }}</td>
+                            <td>{{ $item->address }}</td>
+
                             <td>
                                 <ul class="list-inline">
                                     <li class="list-inline-item">
