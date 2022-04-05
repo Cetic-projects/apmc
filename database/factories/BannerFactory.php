@@ -24,7 +24,7 @@ class BannerFactory extends Factory
         return [
             'name' => $this->faker->name(),
             'is_active' => $this->faker->boolean(),
-            'position' => $this->faker->text(),
+            'position' => $this->faker->numberBetween(1,100),
             'nb_shows' => $this->faker->randomDigit(),
             'nb_clics' => $this->faker->randomDigit(),
         ];

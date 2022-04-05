@@ -9,7 +9,10 @@ class Banner extends Model
 {
     use HasFactory;
 
-    protected $fillable = [];
+    protected $fillable = [
+        'name','is_active', 'position', 'nb_shows', 'nb_clics'
+
+    ];
 
     /*
     |------------------------------------------------------------------------------------
@@ -35,6 +38,7 @@ class Banner extends Model
     public function positions(){
         return $this->belongsToMany(Position::class,'banner_positions');
     }
+    
 
     /*
     |------------------------------------------------------------------------------------
