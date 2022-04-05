@@ -24,7 +24,7 @@ class ReviewFactory extends Factory
         return [
             'rating' => $this->faker->randomDigit(),
             'comment' => $this->faker->text(),
-            'status' => $this->faker->paragraph(),
+            'status' => $this->faker->text(),
         ];
     }
 }

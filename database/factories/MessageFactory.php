@@ -23,7 +23,7 @@ class MessageFactory extends Factory
     {
         return [
             'subject' => $this->faker->text(),
-            'message' => $this->faker->paragraph(),
+            'message' => $this->faker->text(),
             'is-read' => $this->faker->boolean(),
         ];
     }

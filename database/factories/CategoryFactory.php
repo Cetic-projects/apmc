@@ -19,11 +19,12 @@ class CategoryFactory extends Factory
      *
      * @return array
      */
+    
     public function definition()
     {
         return [
             'name' => $this->faker->title(),
-            'description' => $this->faker->paragraph(),
+            'description' => $this->faker->text(),
             'slug' => $this->faker->slug(),
         ];
     }

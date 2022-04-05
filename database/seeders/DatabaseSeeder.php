@@ -34,7 +34,7 @@ class DatabaseSeeder extends Seeder
         });
         Message::factory()->count(5)->create();
         Review::factory()->count(5)->create();
-        Post::factory()->count(5)->create();
+        Post::factory()->create(['category_id'=>1]);
         Category::factory()->count(5)->create();
         Currency::factory()->count(5)->create();
         City::factory()->count(5)->create();

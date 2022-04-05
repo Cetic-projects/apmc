@@ -25,6 +25,7 @@ class PostFactory extends Factory
             'title' => $this->faker->title(),
             'description' => $this->faker->text(),
             'price' => $this->faker->randomDigit(),
+            'price' => $this->faker->randomFloat(null, 1, 900),
             'is_featured' => $this->faker->boolean(),
             'is_negociable' => $this->faker->boolean(),
             'export_price' => $this->faker->randomDigit(),
