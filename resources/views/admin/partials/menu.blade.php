@@ -19,3 +19,40 @@
         <span class="title">Users</span>
     </a>
 </li>
+
+<li class="nav-item">
+    <a class="sidebar-link {{ Str::startsWith($route, ADMIN . '.categories') ? 'actived' : '' }}" href="{{ route(ADMIN . '.categories.index') }}">
+        <span class="icon-holder">
+            <i class='c-amber-500 ti-layout-grid2-alt'></i>
+        </span>
+        <span class="title">{{trans('app.categories')}}</span>
+    </a>
+</li>
+
+<li class="nav-item">
+    <a class="sidebar-link {{ Str::startsWith($route, ADMIN . '.products') ? 'actived' : '' }}" href="{{ route(ADMIN . '.posts.index') }}">
+        <span class="icon-holder">
+            <i class='c-indigo-500 fa fa-shopping-cart'></i>
+        </span>
+        <span class="title">{{ trans('app.posts') }}</span>
+    </a>
+</li>
+
+
+<li class="nav-item">
+    <a class="sidebar-link {{ Str::startsWith($route, ADMIN . '.banners') ? 'actived' : '' }}" href="{{ route(ADMIN . '.banners.index') }}">
+        <span class="icon-holder">
+            <i class='c-pink-500 ti-gift'></i>
+        </span>
+        <span class="title">{{trans('app.banners')}}</span>
+    </a>
+</li>
+
+<li class="nav-item">
+    <a class="sidebar-link {{ Str::startsWith($route, ADMIN . '.positions') ? 'actived' : '' }}" href="{{ route(ADMIN . '.positions.index') }}">
+        <span class="icon-holder">
+            <i class='c-pink-500 ti-gift'></i>
+        </span>
+        <span class="title">{{trans('app.positions')}}</span>
+    </a>
+</li>

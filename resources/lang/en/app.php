@@ -54,15 +54,20 @@ return [
     'icons_social_media'=>'Social networks',
     'create_date'=>"Register date",
     "have_not"=>"none",
+    'code'=>'Code',
+
     //buttons
     'delete_list_of_users'=>'Delete selected',
 
     'users'=>'Users',
     'products'=>'Products',
     'posts'=>'Posts',
+    'post'=>'Post',
     'roles'=>'Roles',
     'permessions'=>"Permissions",
     'dashboard'=>'Dashboard',
+    'positions'=>'Positions',
+
 
     'branches'=>'Branches',
     'branch'=>'Branch',
@@ -86,6 +91,7 @@ return [
     'option_field'=>'Field option',
 
     'name'=>'Name',
+    'title'=>'Title',
     'responsable'=>'Responsable',
     'icon'=>'Icon',
     'in_menu'=>'In menu',
