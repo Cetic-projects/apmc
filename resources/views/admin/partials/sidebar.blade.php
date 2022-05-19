@@ -1,18 +1,18 @@
 <div class="sidebar">
 	<div class="sidebar-inner">
 		<!-- ### $Sidebar Header ### -->
-		<div class="sidebar-logo">
+		<div class="sidebar-logo ">
 			<div class="peers ai-c fxw-nw">
 				<div class="peer peer-greed">
 					<a class='sidebar-link td-n' href="/">
 						<div class="peers ai-c fxw-nw">
-							<div class="peer">
-								<div class="logo">
+							<div class="peer mt-3">
+								<div class="logo " >
 									<img src="/images/logo.png" alt="">
 								</div>
 							</div>
 							<div class="peer peer-greed">
-								<h5 class="lh-1 mB-0 logo-text">Laradminator</h5>
+								<h5 class="lh-1 mB-0 logo-text"></h5>
 							</div>
 						</div>
 					</a>
