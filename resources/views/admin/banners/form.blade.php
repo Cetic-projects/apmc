@@ -4,7 +4,8 @@
             {!! Form::myInput('text', 'name', trans('app.name'),[], isset($item) != null ? $item->name:null) !!}
             {!! Form::myInput('text', 'link', 'URL',[], isset($item) != null ? $item->link:null) !!}
 			{!! Form::mySelect('position', trans('app.position'), $positions, isset($item) != null ? $item->position:null , ['class' => 'form-control select2']) !!}
-            {!! Form::myFile('avatar', trans('app.avatar')) !!}
+            {!! Form::mySelect('is_active', trans('app.is_active'),config('variables.boolean')) !!}
+            {!! Form::myFile('image', trans('app.image')) !!}
 		</div>
 	</div>
 	@if (isset($item) && $item->getFirstMediaUrl('banners', 'thumb')!=null)

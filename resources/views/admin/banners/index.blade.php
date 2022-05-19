@@ -33,9 +33,9 @@
                         <th>{{ trans('app.name') }}</th>
                         <th>{{ trans('app.user') }}</th>
                         <th>{{ trans('app.position') }}</th>
-                        <th>{{ trans('app.number_views') }}</th>
+                        <!-- <th>{{ trans('app.number_views') }}</th>
                         <th>{{ trans('app.start_date') }}</th>
-                        <th>{{ trans('app.end_date') }}</th>
+                        <th>{{ trans('app.end_date') }}</th> -->
                         <th>{{ trans('app.active') }}</th>
                         <th>{{ trans('app.actions') }}</th>
 
@@ -49,9 +49,9 @@
                         <th>{{ trans('app.name') }}</th>
                         <th>{{ trans('app.user') }}</th>
                         <th>{{ trans('app.position') }}</th>
-                        <th>{{ trans('app.number_views') }}</th>
+                        <!--<th>{{ trans('app.number_views') }}</th>
                         <th>{{ trans('app.start_date') }}</th>
-                        <th>{{ trans('app.end_date') }}</th>
+                        <th>{{ trans('app.end_date') }}</th>-->
                         <th>{{ trans('app.active') }}</th>
                         <th>{{ trans('app.actions') }}</th>
                     </tr>
@@ -67,24 +67,23 @@
                                 </div>
 
                             </td>
-                            
+
                             <td>
 
                                 <a href="{{ route(ADMIN . '.banners.edit', $item->id) }}" >{{ $item->name }}</a>
-                                
+
                             </td>
                             <td>{{ $item->name}}</td>
                             <td >{{ $item->position }}</td>
-                            <td>{{ $item->nb_clics}}</td>
+                            <!--<td>{{ $item->nb_clics}}</td>
                             <td>{{ $item->start_date }}</td>
-                            <td>{{ $item->end_date }}</td>
+                            <td>{{ $item->end_date }}</td>-->
                             <td>{{ config('variables.boolean')[$item->is_active] }}</td>
-
                             <td>
                                 <ul class="list-inline">
                                     <li class="list-inline-item">
                                         <a href="{{ route(ADMIN . '.banners.edit', $item->id) }}" title="{{ trans('app.edit_title') }}" class="btn btn-primary btn-sm"><span class="ti-pencil"></span></a>
-                                        
+
                                     </li>
                                     <li class="list-inline-item">
                                         {!! Form::open([
