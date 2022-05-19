@@ -13,7 +13,7 @@ class PostController extends Controller
 {
     public $posts;
 
-    
+
 
     //
     /**
@@ -23,7 +23,7 @@ class PostController extends Controller
      */
     public function index()
     {
-        $items=Post::latest('updated_at')->with(['category'])->get();
+        $items=Post::latest('updated_at')->with('category')->get();
         return view('admin.posts.index', compact('items'));
     }
 
@@ -50,10 +50,9 @@ class PostController extends Controller
         $data = $request->all();
         $data['slug'] = $request->name;
         $item = Post::create($data);
-        if($request->hasFile('avatar') && $request->file('avatar')->isValid()){
-
-            $item->addMediaFromRequest('avatar')->toMediaCollection('posts');
-
+        if (request()->has('image')) {
+            $item->addMedia(request('image'))
+                ->toMediaCollection('image');
         }
 
         return back()->withSuccess(trans('app.success_store'));
@@ -100,13 +99,10 @@ class PostController extends Controller
 
         $data['end_promotional_date'] = $this->StringToDate($request->end_promotional_date);
         $item->update($data);
-        if($request->hasFile('avatar') && $request->file('avatar')->isValid()){
-            if($item->getFirstMediaUrl('posts', 'thumb')!=null){
-                $item->clearMediaCollection('posts');
-            }
-
-            $item->addMediaFromRequest('avatar')->toMediaCollection('posts');
-
+        if (request()->has('image')) {
+            $item->clearMediaCollection('image')
+                ->addMedia(request('image'))
+                ->toMediaCollection('image');
         }
 
         return redirect()->route(ADMIN . '.posts.index')->withSuccess(trans('app.success_update'));

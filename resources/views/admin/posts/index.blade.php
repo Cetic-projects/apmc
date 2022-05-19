@@ -61,7 +61,7 @@
                             <td>
                                 <a href="{{ route(ADMIN . '.posts.edit', $item->id) }}" style='font-size: 14px' class= '{{$item->quantity==0 ? "badge badge-danger" :null}}' >{{ $item->title }}</a>
                             </td>
-                            
+
                             <td>
                                 @if($item->category)
                                 {{ $item->category->name}}
