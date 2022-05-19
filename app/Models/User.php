@@ -8,11 +8,15 @@ use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Spatie\MediaLibrary\HasMedia;
+use Spatie\MediaLibrary\InteractsWithMedia;
 
 
-class User extends Authenticatable
+class User extends Authenticatable implements HasMedia
 {
     use HasApiTokens, HasFactory, Notifiable , HasRoles;
+    use InteractsWithMedia;
+
 
     /**
      * The attributes that are mass assignable.
@@ -102,5 +106,17 @@ class User extends Authenticatable
     }
     public function city(){
         return $this->belongsTo(City::class);
+    }
+
+
+
+    public function getImageAttribute()
+    {
+        return $this->getFirstMediaUrl('image');
+    }
+
+    public function getRolesStrAttribute()
+    {
+        return $this->roles->pluck('name')->implode(', ');
     }
 }
