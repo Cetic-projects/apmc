@@ -5,8 +5,8 @@
 @stop
 
 @section('content')
-	{!! Form::model($Position, [
-			'route'  => [ ADMIN . '.positions.update', $Position->id ],
+	{!! Form::model($item, [
+			'route'  => [ ADMIN . '.positions.update', $item->id ],
 			'method' => 'put',
 			'files'  => true
 		])

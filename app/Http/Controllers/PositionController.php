@@ -15,7 +15,7 @@ class PositionController extends Controller
      */
     public function index()
     {
-        $items = Position::latest('updated_at')->with(['banners'])->get();
+        $items = Position::latest('updated_at')->get();
 
         return view('admin.positions.index', compact('items'));
     }
@@ -41,26 +41,10 @@ class PositionController extends Controller
         $this->validate($request, Position::rules());
         $data = $request->all();
         $item=Position::create($data);
-        if($request->hasFile('avatar') && $request->file('avatar')->isValid()){
-
-
-            $item->addMediaFromRequest('avatar')->toMediaCollection('Positions');
-
-        }
-
         return back()->withSuccess(trans('app.success_store'));
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Position  $position
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Position $position)
-    {
-        //
-    }
+
 
     /**
      * Show the form for editing the specified resource.
@@ -68,7 +52,7 @@ class PositionController extends Controller
      * @param  \App\Models\Position  $position
      * @return \Illuminate\Http\Response
      */
-    public function edit(Position $position)
+    public function edit($id)
     {
         $item = Position::findOrFail($id);
 
@@ -82,9 +66,17 @@ class PositionController extends Controller
      * @param  \App\Models\Position  $position
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Position $position)
+    public function update(Request $request, $id )
     {
-        //
+        $this->validate($request, Position::rules(true, $id));
+
+        $item = Position::findOrFail($id);
+
+        $data = $request->all();
+
+        $item->update($data);
+
+        return redirect()->route(ADMIN . '.positions.index')->withSuccess(trans('app.success_update'));
     }
 
     /**
@@ -93,8 +85,21 @@ class PositionController extends Controller
      * @param  \App\Models\Position  $position
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Position $position)
+    public function destroy($id)
     {
-        //
+        Position::destroy($id);
+        return back()->withSuccess(trans('app.success_destroy'));
+    }
+    public function groupedAction()
+    {
+        if (empty(request('ids', []))) {
+            return back()->withWarning('must select positions to delete');
+        }
+        $ids = request('ids', []);
+        $positions = Position::whereIn('id', $ids)->get();
+
+        $positions->each(fn ($position) => $position->delete());
+        return back()->withSucces('Positions have been deleted');
+        # code...
     }
 }
