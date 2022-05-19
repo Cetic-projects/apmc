@@ -1,10 +1,12 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use DB;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\User;
+use Spatie\Permission\Models\Role;
+
 
 class UserController extends Controller
 {
@@ -15,7 +17,7 @@ class UserController extends Controller
      */
     public function index()
     {
-        $items = User::latest('updated_at')->get();
+        $items = User::latest('updated_at')->with('roles')->get();
 
         return view('admin.users.index', compact('items'));
     }
@@ -25,9 +27,13 @@ class UserController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+
     public function create()
     {
-        return view('admin.users.create');
+        $roles = Role::pluck('name','name')->all();
+
+        return view('admin.users.create',compact('roles'));
     }
 
     /**
@@ -43,7 +49,13 @@ class UserController extends Controller
         $data = $request->all();
         $data['password'] = bcrypt(request('password'));
 
-        User::create($data);
+        $user=User::create($data);
+        $user->assignRole(request('roles'));
+
+        if (request()->has('image')) {
+            $user->addMedia(request('image'))
+                ->toMediaCollection('image');
+        }
 
         return back()->withSuccess(trans('app.success_store'));
     }
@@ -68,8 +80,8 @@ class UserController extends Controller
     public function edit($id)
     {
         $item = User::findOrFail($id);
-
-        return view('admin.users.edit', compact('item'));
+        $roles = Role::pluck('name', 'name')->all();
+        return view('admin.users.edit', compact('item','roles'));
     }
 
     /**
@@ -90,8 +102,14 @@ class UserController extends Controller
         if (request('password')) {
             $data['password'] = bcrypt(request('password'));
         }
-
         $item->update($data);
+        $item->syncRoles(request('roles'));
+        $item->update($data);
+        if (request()->has('image')) {
+            $item->clearMediaCollection('image')
+                ->addMedia(request('image'))
+                ->toMediaCollection('image');
+        }
 
         return redirect()->route(ADMIN . '.users.index')->withSuccess(trans('app.success_update'));
     }
