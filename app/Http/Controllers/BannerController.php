@@ -32,7 +32,7 @@ class BannerController extends Controller
     {
         $positions= Position::pluck('name','code');
         return view('admin.banners.create',compact('positions'));
-       
+
     }
     /**
      * Store a newly created resource in storage.
@@ -45,11 +45,10 @@ class BannerController extends Controller
         $this->validate($request, Banner::rules());
         $data = $request->all();
         $item=Banner::create($data);
-        if($request->hasFile('avatar') && $request->file('avatar')->isValid()){
 
-
-            $item->addMediaFromRequest('avatar')->toMediaCollection('banners');
-
+        if (request()->has('image')) {
+            $item->addMedia(request('image'))
+                ->toMediaCollection('banners');
         }
 
         return back()->withSuccess(trans('app.success_store'));
@@ -64,8 +63,9 @@ class BannerController extends Controller
     {
 
         $item = Banner::findOrFail($id);
+        $positions= Position::pluck('name','code');
 
-        return view('admin.banners.edit', compact('item'));
+        return view('admin.banners.edit', compact('item','positions'));
     }
 
     /**
@@ -95,13 +95,10 @@ class BannerController extends Controller
         $data['end_date'] = $this->StringToDate($request->end_date);
         $data['user_id']=Auth::id();
         $item->update($data);
-        if($request->hasFile('avatar') && $request->file('avatar')->isValid()){
-            if($item->getFirstMediaUrl('banners', 'thumb')!=null){
-                $item->clearMediaCollection('banners');
-            }
-
-            $item->addMediaFromRequest('avatar')->toMediaCollection('banners');
-
+        if (request()->has('image')) {
+            $item->clearMediaCollection('banners')
+                ->addMedia(request('image'))
+                ->toMediaCollection('banners');
         }
 
         return redirect()->route(ADMIN . '.banners.index')->withSuccess(trans('app.success_update'));
