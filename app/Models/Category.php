@@ -11,7 +11,7 @@ class Category extends Model
     use HasFactory, NodeTrait;
 
     protected $fillable = [
-        'name','description', 'slug'
+        'name','description', 'slug', 'type'
     ];
 
     /*
@@ -21,11 +21,21 @@ class Category extends Model
     */
     public static function rules($update = false, $id=null)
     {
-        return [
-            'name' => 'required',
-            'description' =>"required",
+
+        $common = [
+            'name' => "required|string|unique:categories,name,$id",
+            'description' => 'nullable',
             'slug'   =>'nullable',
+
         ];
+
+        if ($update) {
+            return $common;
+        }
+
+        return array_merge($common, [
+            'name'    => 'required|string|unique:categories',
+        ]);
     }
 
     /*

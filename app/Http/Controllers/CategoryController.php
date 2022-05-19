@@ -17,7 +17,7 @@ use App\Models\Category;
 class CategoryController extends Controller
 
 {
-    
+
     /**
 
      * Display a listing of the resource.
@@ -35,8 +35,6 @@ class CategoryController extends Controller
         // $items = Category::latest('updated_at')->get();
 
         $items = Category::get()->toTree();
-
-
         return view('admin.categories.index', compact('items'));
 
     }
@@ -152,13 +150,9 @@ class CategoryController extends Controller
     public function update(Request $request, $id)
 
     {
-
         $this->validate($request, Category::rules(true, $id));
 
-
         $parent = Category::find(request('parent_id'));
-
-
 
         $item = Category::findOrFail($id);
 
@@ -166,8 +160,6 @@ class CategoryController extends Controller
         $data['slug']=$data['name'];
 
         $item->update($data);
-
-
 
         if ($parent) {
 
@@ -178,15 +170,7 @@ class CategoryController extends Controller
             $item->saveAsRoot();
 
         }
-
-
-
-
-
-
-
         return back()->withSuccess(trans('app.success_update'));
-
     }
 
 
