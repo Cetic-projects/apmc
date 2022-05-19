@@ -1,7 +1,7 @@
 <?php
 
 return [
-    
+
     'boolean' => [
         0 => 'No',
         1 => 'Yes',
@@ -11,7 +11,7 @@ return [
         0 => 'User',
         10 => 'Admin',
     ],
-    
+
     'status' => [
         1 => 'Active',
         0 => 'Inactive',
@@ -20,9 +20,13 @@ return [
     'avatar' => [
         'public' => '/storage/avatar/',
         'folder' => 'avatar',
-        
+
         'width'  => 400,
         'height' => 400,
+    ],
+    'categories_type' => [
+        0 => 'product',
+        1 => 'service',
     ],
 
     /*
