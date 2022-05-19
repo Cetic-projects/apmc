@@ -13,6 +13,8 @@
 
                 {!! Form::myTextArea('description',trans('app.about')) !!}
 
+                {!! Form::mySelect('type', 'Type', config('variables.categories_type')) !!}
+
 
 		</div>
 	</div>

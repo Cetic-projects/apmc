@@ -1,40 +1,31 @@
 @foreach ($items as $item)
     <tr>
-        @can('category delete')
         <td>
             <div class="form-check">
                 <input type="checkbox" form="groupedAction" name="ids[]" value="{{ $item->id }}" class="form-check-input checkBoxClass">
             </div>
         </td>
-        @endcan
         <td>
-            @can('category updade')
                 <a href="{{ route(ADMIN . '.categories.edit', $item->id) }}">
                     {!! $prefix !!} {{ $item->name }}
                 </a>
-            @else
-                {!! $prefix !!} {{ $item->name }}
-            @endcan
+
 
         </td>
 
-        <td class="ta-c"><i class="c-red-500 {{ $item->icon }}"></i></td>
+        <td>{{ $item->description }}</td>
+        <td>{{ config('variables.categories_type')[$item->type] }}</td>
 
-        <td>{{ $item->inMenuName }}</td>
 
-        @canany(['category updade','category delete'])
 
 
             <td>
                 <ul class="list-inline">
-                    @can('category updade')
                         <li class="list-inline-item">
                             <a href="{{ route(ADMIN . '.categories.edit', $item->id) }}" title="{{ trans('app.edit_title') }}" class="btn btn-primary btn-sm update-{{$item->id}}">
                                 <span class="ti-pencil"></span>
                             </a>
                         </li>
-                    @endcan
-                    @can('category delete')
                         <li class="list-inline-item">
                             {!! Form::open([
                                 'class'=>'delete',
@@ -47,10 +38,8 @@
 
                             {!! Form::close() !!}
                         </li>
-                    @endcan
                 </ul>
             </td>
-        @endcanany
     </tr>
     @include('admin.categories._row', ['items' => $item->children, 'prefix' => $prefix . '__'])
 @endforeach

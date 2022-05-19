@@ -13,7 +13,7 @@
                 {{ trans('app.add_button') }}
             </a>
         </div>
-        
+
         <div class="col-sm-8">
             {!! Form::open([
                 'id' => 'groupedAction',
@@ -37,7 +37,7 @@
                     </th>
                     <th>{{trans('app.name')}}</th>
                     <th>{{trans('app.description')}}</th>
-                    <th>{{trans('app.slug')}}</th>
+                    <th>{{trans('app.type')}}</th>
                     <th>{{trans('app.actions')}}</th>
                 </tr>
             </thead>
@@ -47,12 +47,13 @@
                     <th></th>
                     <th>Name</th>
                     <th>description</th>
-                    <th>slug</th>
+                    <th>{{trans('app.type')}}</th>
                     <th>Actions</th>
                 </tr>
             </tfoot>
 
             <tbody>
+            @include('admin.categories._row', ['items' => $items, 'prefix' => ''])
             </tbody>
 
         </table>
