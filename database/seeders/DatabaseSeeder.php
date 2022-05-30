@@ -25,22 +25,43 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
+        $faker = \Faker\Factory::create();
         // $this->call(users::class);
         $this->call(role_permission::class);
-        AdminMail::factory()->count(5)->create();
-        Position::factory()->count(5)->create();
-        Banner::factory()->count(2)->create()->each(function ($banner) {
-            $banner->positions()->attach(Position::factory()->create());
-        });
-        Message::factory()->count(5)->create();
-        Review::factory()->count(5)->create();
-        Post::factory()->create(['category_id'=>1]);
+        //AdminMail::factory()->count(5)->create();
+       // Position::factory()->count(5)->create();
+       // Banner::factory()->count(2)->create()->each(function ($banner) {
+           // $banner->positions()->attach(Position::factory()->create());
+        //});
+        //Message::factory()->count(5)->create();
         Category::factory()->count(5)->create();
-        Currency::factory()->count(5)->create();
+       for($i=0;$i<30;$i++){
+        Post::create([
+            "title"=>$faker->name(),
+            "category_id"=>$faker->randomElement(Category::pluck('id')),
+            "description"=>$faker->sentence(10),
+            "price"=>$faker->numberBetween(100,10000),
+
+        ]);
+    }
+
+
+       // Currency::factory()->count(5)->create();
         City::factory()->count(5)->create();
         User::factory()->create(['first_name'=>'enadir','email'=> 'test@example.com'])->assignRole('super_admin');
 
 
+        $users_id= User::pluck('id');
+        $posts_id= Post::pluck('id');
+        for ($i = 1; $i <= 10; $i++) {
+            Review::create([
+                'comment'     => $faker->sentence(),
+                'rating'    => $faker->numberBetween(1,5),
+                'user_id' => $faker->randomElement($users_id),
+                'post_id'     => $faker->randomElement($posts_id),
+                'status'=>0,
+            ]);
+        }
 
         if (config('variables.WITH_FAKER')) {
             // FAKE data
