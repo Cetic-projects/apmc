@@ -2,12 +2,13 @@
 
 namespace App\Models;
 
+use App\Traits\Dates;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class Message extends Model
 {
-    use HasFactory;
+    use HasFactory,Dates;
 
     protected $fillable = [];
 
@@ -29,8 +30,8 @@ class Message extends Model
     | Relations
     |------------------------------------------------------------------------------------
     */
-    
-    
+
+
     public function post(){
         return $this->belongsTo(Post::class);
     }
