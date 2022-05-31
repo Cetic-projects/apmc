@@ -109,6 +109,10 @@ class User extends Authenticatable implements HasMedia
     public function city(){
         return $this->belongsTo(City::class);
     }
+    public  function orders()
+    {
+        return $this->hasMany(Order::class);
+    }
 
 
 

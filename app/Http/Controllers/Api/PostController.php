@@ -21,7 +21,7 @@ class PostController extends Controller
     public function index()
     {
         $products=Cache::remember('posts',6,function(){
-            return Post::with(['category','media','reviews'])->get();
+            return Post::with(['category','media','reviews','orders'])->get();
         });
 
         return $this->ApiJsonResponse("Posts have been fetched",PostResource::collection($products),200);
@@ -36,7 +36,7 @@ class PostController extends Controller
     public function topTen()
     {
         $products=Cache::remember('top-10-posts',6,function(){
-            return Post::with(['category','media','reviews'])->get()->sortByDesc('rating')->take(10);
+            return Post::with(['category','media','reviews','orders'])->get()->sortByDesc('rating')->take(10);
         });
 
         return $this->ApiJsonResponse("Posts have been fetched",PostResource::collection($products),200);
@@ -45,7 +45,7 @@ class PostController extends Controller
     public function byCategory($id)
     {
         $products=Cache::remember('posts-by-category',6,function()use($id){
-            return Post::where('category_id',$id)->with(['category','media','reviews'])->get()->sortByDesc('rating')->take(10);
+            return Post::where('category_id',$id)->with(['category','media','reviews','orders'])->get()->sortByDesc('rating')->take(10);
         });
 
         return $this->ApiJsonResponse("Posts have been fetched",PostResource::collection($products),200);

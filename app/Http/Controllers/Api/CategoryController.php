@@ -21,7 +21,7 @@ class CategoryController extends Controller
     public function index()
     {
         $categories=Cache::remember('tree-of-categories',6,function(){
-            return Category::whereNull("parent_id")->get();
+           return Category::get()->toTree();
         });
 
         return $this->ApiJsonResponse("Categories have been fetched",TreeCategoryResource::collection($categories),200);

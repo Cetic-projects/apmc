@@ -9,6 +9,7 @@ use App\Models\City;
 use App\Models\Post;
 use App\Models\Currency;
 use App\Models\Message;
+use App\Models\Order;
 use App\Models\Position;
 use App\Models\Review;
 use App\Models\User;
@@ -61,6 +62,22 @@ class DatabaseSeeder extends Seeder
                 'post_id'     => $faker->randomElement($posts_id),
                 'status'=>0,
             ]);
+        }
+        $status=['New','In preparation','In dispatch','In delivering','Delivered','Failed'];
+        for($j=0;$j<30;$j++){
+            $post=$faker->randomElement(Post::all());
+            $amount=$faker->numberBetween(1,$post->amount);
+            Order::create(
+                [
+                    "amount"=>$amount,
+                    "receipt"=>$amount*$post->price,
+                    "status"=>$faker->randomElement($status),
+                    "post_id"=>$post->id,
+                    "user_id"=>$faker->randomElement(User::pluck('id')),
+
+
+                ]
+                );
         }
 
         if (config('variables.WITH_FAKER')) {

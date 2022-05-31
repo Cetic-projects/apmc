@@ -70,7 +70,10 @@ class Post extends Model implements HasMedia
     public function user(){
         return $this->belongsTo(User::class);
     }
-
+    public  function orders()
+    {
+        return $this->hasMany(Order::class);
+    }
     /*
     |------------------------------------------------------------------------------------
     | Scopes
@@ -112,5 +115,19 @@ class Post extends Model implements HasMedia
             get: fn ($value) => $this->reviews()->where('rating','!=',0)->avg('rating'),
         );
     }
+
+    protected function numberOfSales(): Attribute
+    {
+        return Attribute::make(
+            get: fn ($value) =>!$this->orders()->exists()?0: $this->orders()->where('status',"Delivered")->sum('amount'),
+        );
+    }
+    protected function salesPercentage(): Attribute
+    {
+        return Attribute::make(
+            get: fn ($value) => !$this->orders()->exists()?0:($this->orders()->where('status',"Delivered")->sum('amount')*100)/($this->orders()->sum('amount')+$this->amount),
+        );
+    }
+
 }
 
