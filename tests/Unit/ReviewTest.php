@@ -20,7 +20,7 @@ it('can upate or store a review ', function () {
     $user=User::where('email',$email)->first();
     $token = $user->createToken('auth_token')->plainTextToken;
     $body=["comment"=>$faker->sentence(4),
-    "rating"=>$faker->numberBetween(0,5),
+    "rating"=>$faker->numberBetween(1,5),
     "post_id"=>$faker->randomElement(Post::pluck('id'))];
 
     $response = $this->withHeaders(['Authorization' => 'Bearer '.$token])->postJson('/api/v1/auth/review/create-or-update',$body);
@@ -40,8 +40,8 @@ it('can\'t upate or store a review ', function () {
 });
 it('can delete a review ', function () {
     $faker = \Faker\Factory::create();
-    $users=User::pluck('id');
-    $user=User::find($faker->randomElement($users));
+    $users=User::has('reviews')->pluck('id');
+    $user=User::where('id',$faker->randomElement($users))->first();
     $token = $user->createToken('auth_token')->plainTextToken;
     $id=$faker->randomElement($user->reviews->pluck('id'));
     $response = $this->withHeaders(['Authorization' => 'Bearer '.$token])->deleteJson('/api/v1/auth/review/'.$id.'/delete');

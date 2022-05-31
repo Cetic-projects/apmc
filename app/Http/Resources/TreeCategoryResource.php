@@ -18,7 +18,8 @@ class TreeCategoryResource extends JsonResource
             "id"=>$this->id,
             "name"=>$this->name,
             "description"=>$this->description,
-            "children"=>CategoryResource::collection($this->load('children')->children),
+            "children"=>TreeCategoryResource::collection($this->children),
+
         ];
     }
 }

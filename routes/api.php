@@ -4,6 +4,7 @@ use App\Http\Controllers\API\AuthController;
 use App\Http\Controllers\Api\CategoryController;
 use App\Http\Controllers\API\ClientController;
 use App\Http\Controllers\API\LoginController;
+use App\Http\Controllers\Api\OrderController;
 use App\Http\Controllers\API\PostController;
 use App\Http\Controllers\API\RegisterController;
 use App\Http\Controllers\API\ResetPasswordController;
@@ -45,6 +46,11 @@ Route::group(['prefix' => "v1"], function () {
         //reviews
          Route::post('review/create-or-update',[ReviewController::class,'store']);
          Route::delete('review/{id}/delete',[ReviewController::class,'destroy']);
+        //orders
+        Route::get('orders',[OrderController::class,'index']);
+        Route::post('order/create',[OrderController::class,'store']);
+        Route::put('order/{id}/update',[OrderController::class,'update']);
+        Route::put('order/{id}/cancel',[OrderController::class,'destroy']);
     });
     //posts
     Route::get("posts",[PostController::class,'index']);
@@ -56,4 +62,5 @@ Route::group(['prefix' => "v1"], function () {
     //categories
     Route::get('tree-categories',[CategoryController::class,'index']);
     Route::get('categories',[CategoryController::class,'allCategories']);
+
 });
