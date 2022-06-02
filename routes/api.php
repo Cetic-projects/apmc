@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\API\AuthController;
+use App\Http\Controllers\Api\BannerController;
 use App\Http\Controllers\Api\CategoryController;
 use App\Http\Controllers\API\ClientController;
 use App\Http\Controllers\API\LoginController;
@@ -36,7 +37,7 @@ Route::group(['prefix' => "v1"], function () {
     Route::post('send-reset-link-response',[ResetPasswordController::class,'sendResetLinkResponse']);
     Route::post('send-reset-response',[ResetPasswordController::class,'sendResetResponse']);
     Route::get('email/verify/{id}', [VerificationEmailController::class,'verify'])->name('verification.verify');
-    Route::group(['prefix' =>"auth",'middleware' => ['auth:sanctum']], function () {
+    Route::group(['prefix' =>"auth",'middleware' => ['auth:sanctum','if_email_verified']], function () {
         //user
         Route::get('email/resend', [VerificationEmailController::class,'resend'])->name('verification.resend');
         Route::get('/myprofile',[AuthController::class, 'myprofile'] );
@@ -56,11 +57,14 @@ Route::group(['prefix' => "v1"], function () {
     Route::get("posts",[PostController::class,'index']);
     Route::get("top-10-posts",[PostController::class,'topTen']);
     Route::get("category/{id}/posts",[PostController::class,'byCategory']);
+    Route::get("promotinal-posts",[PostController::class,'promotinal']);
     //reviews
     Route::get("post/{id}/reviews",[ReviewController::class,'show']);
     Route::delete('review/{id}/delete',[ReviewController::class,'destroy']);
     //categories
     Route::get('tree-categories',[CategoryController::class,'index']);
     Route::get('categories',[CategoryController::class,'allCategories']);
+    //position/1/banner
+    Route::get('position/{id}/banner',[BannerController::class,'show']);
 
 });

@@ -31,9 +31,9 @@ class DatabaseSeeder extends Seeder
         $this->call(role_permission::class);
         //AdminMail::factory()->count(5)->create();
        // Position::factory()->count(5)->create();
-       // Banner::factory()->count(2)->create()->each(function ($banner) {
-           // $banner->positions()->attach(Position::factory()->create());
-        //});
+        Banner::factory()->count(2)->create()->each(function ($banner) {
+           $banner->positions()->attach(Position::factory()->create());
+        });
         //Message::factory()->count(5)->create();
         Category::factory()->count(5)->create();
        for($i=0;$i<30;$i++){

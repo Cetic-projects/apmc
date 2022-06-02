@@ -15,8 +15,10 @@ class PostResource extends JsonResource
     public function toArray($request)
     {
         return [
+
             "id"=>$this->id,
             "title"=>$this->title,
+            'image'=>$this->getFirstMediaUrl('posts', 'thumb'),
             "description"=>$this->description,
             "price"=>$this->price,
             "export_price"=>$this->export_price,

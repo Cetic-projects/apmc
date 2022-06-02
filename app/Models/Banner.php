@@ -15,7 +15,7 @@ class Banner extends Model implements HasMedia
 
 
     protected $fillable = [
-        'name','is_active', 'position', 'nb_shows', 'nb_clics'
+        'name','is_active', 'position', 'nb_shows', 'nb_clics','end_date','start_date'
 
     ];
 
@@ -32,6 +32,8 @@ class Banner extends Model implements HasMedia
             'position' =>"nullable",
             'nb_shows' =>"nullable|integer",
             'nb_clics' =>"nullable|integer",
+            'start_date'=>'required|date|after:now',
+            'end_date' => 'required|date|after:start_date'
         ];
     }
 

@@ -2,7 +2,9 @@
 
 namespace App\Observers;
 
+use App\Models\Post;
 use App\Models\Product;
+use Illuminate\Support\Facades\Cache;
 
 class PostObserver
 {
@@ -12,9 +14,13 @@ class PostObserver
      * @param  \App\Models\Product  $product
      * @return void
      */
-    public function created(Product $product)
+    public function created(Post $post)
     {
         //
+        Cache::forget('promotinal');
+        Cache::forget('posts-by-category');
+        Cache::forget('top-10-posts');
+        Cache::forget('posts');
     }
 
     /**
@@ -23,9 +29,12 @@ class PostObserver
      * @param  \App\Models\Product  $product
      * @return void
      */
-    public function updated(Product $product)
+    public function updated(Post $post)
     {
-        //
+        Cache::forget('promotinal');
+        Cache::forget('posts-by-category');
+        Cache::forget('top-10-posts');
+        Cache::forget('posts');
     }
 
     /**
@@ -34,9 +43,12 @@ class PostObserver
      * @param  \App\Models\Product  $product
      * @return void
      */
-    public function deleted(Product $product)
+    public function deleted(Post $post)
     {
-        //
+        Cache::forget('promotinal');
+        Cache::forget('posts-by-category');
+        Cache::forget('top-10-posts');
+        Cache::forget('posts');
     }
 
     /**
@@ -45,7 +57,7 @@ class PostObserver
      * @param  \App\Models\Product  $product
      * @return void
      */
-    public function restored(Product $product)
+    public function restored(Post $post)
     {
         //
     }
@@ -56,7 +68,7 @@ class PostObserver
      * @param  \App\Models\Product  $product
      * @return void
      */
-    public function forceDeleted(Product $product)
+    public function forceDeleted(Post $post)
     {
         //
     }

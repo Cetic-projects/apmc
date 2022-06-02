@@ -12,8 +12,6 @@ it('can fetch order of a post', function () {
     $token = $user->createToken('auth_token')->plainTextToken;
     $response = $this->withHeaders(['Authorization' => 'Bearer '.$token])->getJson('/api/v1/auth/orders');
     $response->assertStatus(200)->assertJson(['message' => 'Orders have been fetched']);
-
-
 });
 
 it('can store an order ', function () {
@@ -89,8 +87,7 @@ it('can\'t cancel an order ', function () {
     $token = $user->createToken('auth_token')->plainTextToken;
     $another=User::has('orders')->where('email','!=',$email)->first();
     $order=$another->orders->first();
-
-     $response = $this->withHeaders(['Authorization' => 'Bearer '.$token])->putJson('/api/v1/auth/order/'.$order->id.'/cancel');
-     $response->assertStatus(404);
+    $response = $this->withHeaders(['Authorization' => 'Bearer '.$token])->putJson('/api/v1/auth/order/'.$order->id.'/cancel');
+    $response->assertStatus(404);
 });
 
