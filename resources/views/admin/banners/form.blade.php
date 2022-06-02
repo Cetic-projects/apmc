@@ -5,6 +5,8 @@
             {!! Form::myInput('text', 'link', 'URL',[], isset($item) != null ? $item->link:null) !!}
 			{!! Form::mySelect('position', trans('app.position'), $positions, isset($item) != null ? $item->position:null , ['class' => 'form-control select2']) !!}
             {!! Form::mySelect('is_active', trans('app.is_active'),config('variables.boolean')) !!}
+            {!! Form::myInput('datetime-local', 'start_date', 'Start date', ['class' => 'form-control']) !!}
+            {!! Form::myInput('datetime-local', 'end_date', 'End date', ['class' => 'form-control']) !!}
             {!! Form::myFile('image', trans('app.image')) !!}
 		</div>
 	</div>

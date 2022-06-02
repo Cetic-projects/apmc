@@ -51,6 +51,19 @@ class PostController extends Controller
         return $this->ApiJsonResponse("Posts have been fetched",PostResource::collection($products),200);
     }
 
+    public function promotinal(){
+        $posts=Cache::remember('promotinal',6,function(){
+            return Post::where(function($query){
+                $query
+                ->where('begin_promotional_date','<',now())
+                ->where('end_promotional_date','>',now())
+                ->where('promotional_price','!=',null);
+            })->get();
+        });
+        return $this->ApiJsonResponse("Posts have been fetched",PostResource::collection($posts),200);
+
+    }
+
     /**
      * Display the specified resource.
      *
