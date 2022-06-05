@@ -52,7 +52,7 @@ class PostController extends Controller
         $item = Post::create($data);
         if (request()->has('image')) {
             $item->addMedia(request('image'))
-                ->toMediaCollection('image');
+                ->toMediaCollection('posts');
         }
 
         return back()->withSuccess(trans('app.success_store'));
@@ -100,9 +100,9 @@ class PostController extends Controller
         $data['end_promotional_date'] = $this->StringToDate($request->end_promotional_date);
         $item->update($data);
         if (request()->has('image')) {
-            $item->clearMediaCollection('image')
+            $item->clearMediaCollection('posts')
                 ->addMedia(request('image'))
-                ->toMediaCollection('image');
+                ->toMediaCollection('posts');
         }
 
         return redirect()->route(ADMIN . '.posts.index')->withSuccess(trans('app.success_update'));

@@ -87,7 +87,7 @@ class Post extends Model implements HasMedia
     */
     public function getImageAttribute()
     {
-        return $this->getFirstMediaUrl('image');
+        return $this->getFirstMediaUrl('posts');
     }
     protected function beginPromotionalDate(): Attribute
     {

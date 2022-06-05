@@ -28,8 +28,7 @@ class AuthController extends Controller
         $user=$request->user();
 
         $validator = Validator::make($request->all(),[
-            'last_name'     =>  "string|min:4",
-            'first_name'     =>  "string|min:4",
+            'name'     =>  "string|min:4",
             'email' => "email|unique:users,email,$user->id",
             'password' => 'nullable|min:6',
             'avatar' => 'image',

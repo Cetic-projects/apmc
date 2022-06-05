@@ -1,9 +1,7 @@
 <div class="row mB-40">
 	<div class="col-sm-8">
 		<div class="bgc-white p-20 bd">
-			{!! Form::myInput('text', 'first_name', 'First_name') !!}
-
-			{!! Form::myInput('text', 'last_name', 'Last_name') !!}
+			{!! Form::myInput('text', 'name', 'Name') !!}
 
 			{!! Form::myInput('email', 'email', 'Email') !!}
 

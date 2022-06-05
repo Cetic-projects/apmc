@@ -6,7 +6,7 @@ uses(Tests\TestCase::class);
 it('can registe a User', function () {
     $faker = \Faker\Factory::create();
     $email=$faker->email;
-    $attributes = ['first_name'=>'youcef','last_name'=>'youcef','email'=>$email,'phone'=>"1234567890",'password'=>'12345678'];
+    $attributes = ['name'=>'hdi youcef','email'=>$email,'phone'=>"1234567890",'password'=>'12345678'];
     $response = $this->postJson('/api/v1/register', $attributes);
     $response->assertStatus(201)->assertJson(['message' => 'User has been created']);
     //$this->assertDatabaseHas('users', $attributes);
@@ -105,7 +105,7 @@ it('can update user information ', function () {
     $user=User::find($id);
     $token = $user->createToken('auth_token')->plainTextToken;
     $attributes=[
-        "last_name"=>"youcef",
+        "name"=>"youcef hdi",
         "password"=>"12345678",
         "email"=>$user->email,
         "about"=>"hiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii",

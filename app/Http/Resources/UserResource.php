@@ -14,13 +14,12 @@ class UserResource extends JsonResource
      */
     public function toArray($request)
     {
-        $image=$this->getFirstMediaUrl('users', 'thumb');
+        $image=$this->image;
         return [
             'id'=>$this->id,
-            'first_name'=>$this->first_name,
-            'last_name'=>$this->last_name,
+            'name'=>$this->name,
             'email'=>$this->email,
-           'avatar'=>$image==null ? env('APP_URL')."/images/user-avatar.jpg" : $image,
+            'avatar'=>$image==null ? env('APP_URL')."/images/user-avatar.jpg" : $image,
             'address'=>$this->address,
             'phone'=>$this->phone,
             'city'=>CityResource::make($this->whenLoaded("city")),
