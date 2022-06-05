@@ -20,6 +20,8 @@ return new class extends Migration{
             $table->string('position')->nullable();
             $table->unsignedInteger('nb_shows')->nullable();
             $table->unsignedInteger('nb_clics')->nullable();
+            $table->dateTime('start_date')->nullable();
+            $table->dateTime('end_date')->nullable();
             $table->timestamps();
         });
     }

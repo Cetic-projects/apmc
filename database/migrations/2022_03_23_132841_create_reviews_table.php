@@ -18,6 +18,8 @@ class CreateReviewsTable extends Migration
             $table->unsignedInteger('rating')->nullable();
             $table->string('comment')->nullable();
             $table->string('status')->nullable();
+            $table->foreignId("post_id")->constrained()->onDelete('cascade');
+            $table->foreignId("user_id")->constrained()->onDelete('cascade');
             $table->timestamps();
         });
     }

@@ -1,6 +1,7 @@
 <?php
 
 use App\Enums\UserRoles;
+use App\Models\Category;
 
 Route::get('logout', '\App\Http\Controllers\Auth\LoginController@logout');
 Auth::routes();
@@ -10,6 +11,19 @@ Auth::routes();
 | Admin
 |------------------------------------------------------------------------------------
 */
+Route::get('tst',function(){
+    $nodes = Category::get()->toTree();
+
+$traverse = function ($categories, $prefix = '-') use (&$traverse) {
+    foreach ($categories as $category) {
+        echo PHP_EOL.$prefix.' '.$category->name;
+
+        $traverse($category->children, $prefix.'-');
+    }
+};
+
+$traverse($nodes);
+});
 Route::get('/local/{local}', 'LocalController@switchLocal')->name('change.language');
 Route::group(['prefix' => ADMIN, 'as' => ADMIN . '.', 'middleware' => ['auth', 'role:' . App\Enums\UserRoles::SuperAdmin . '|'.App\Enums\UserRoles::Admin]], function () {
     Route::get('/', 'DashboardController@index')->name('dash');

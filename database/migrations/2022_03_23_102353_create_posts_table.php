@@ -17,6 +17,7 @@ return new class extends Migration{
            // $table->foreignId('user_id');
             $table->string('title');
             $table->integer('category_id')->nullable();
+            $table->integer('amount')->default(1);
             $table->string('description')->nullable();
             $table->unsignedInteger('price')->nullable();
             $table->boolean('is_featured')->nullable();

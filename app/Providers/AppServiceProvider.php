@@ -25,11 +25,13 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
+        Schema::defaultStringLength(191);
         Paginator::useBootstrap();
 
         if (!defined('ADMIN')) {
             define('ADMIN', config('variables.APP_ADMIN', 'admin'));
         }
         require_once base_path('resources/macros/form.php');
+
     }
 }

@@ -2,6 +2,8 @@
 
 namespace App\Models;
 
+use App\Traits\Dates;
+use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Spatie\MediaLibrary\HasMedia;
@@ -10,7 +12,7 @@ use Spatie\MediaLibrary\InteractsWithMedia;
 class Post extends Model implements HasMedia
 {
     use HasFactory;
-    use InteractsWithMedia;
+    use InteractsWithMedia,Dates;
 
 
     protected $fillable = [
@@ -18,6 +20,7 @@ class Post extends Model implements HasMedia
         'export_price', 'promotional_price', 'begin_promotional_date', 'end_promotional_date', 'slug',
         'nb_stars', 'video_url' ,'tags'
     ];
+
 
     /*
     |------------------------------------------------------------------------------------
@@ -67,7 +70,10 @@ class Post extends Model implements HasMedia
     public function user(){
         return $this->belongsTo(User::class);
     }
-
+    public  function orders()
+    {
+        return $this->hasMany(Order::class);
+    }
     /*
     |------------------------------------------------------------------------------------
     | Scopes
@@ -83,5 +89,45 @@ class Post extends Model implements HasMedia
     {
         return $this->getFirstMediaUrl('image');
     }
+    protected function beginPromotionalDate(): Attribute
+    {
+        return Attribute::make(
+            get: fn ($value) => date("Y-M-D",strtotime($value)),
+        );
+    }
+    protected function endPromotionalDate(): Attribute
+    {
+        return Attribute::make(
+            get: fn ($value) => date("Y-M-D",strtotime($value)),
+        );
+    }
+
+    protected function isNegociable(): Attribute
+    {
+        return Attribute::make(
+            get: fn ($value) => $value==0 ? false :true,
+        );
+    }
+
+    protected function rating(): Attribute
+    {
+        return Attribute::make(
+            get: fn ($value) => $this->reviews()->where('rating','!=',0)->avg('rating'),
+        );
+    }
+
+    protected function numberOfSales(): Attribute
+    {
+        return Attribute::make(
+            get: fn ($value) =>!$this->orders()->exists()?0: $this->orders()->where('status',"Delivered")->sum('amount'),
+        );
+    }
+    protected function salesPercentage(): Attribute
+    {
+        return Attribute::make(
+            get: fn ($value) => !$this->orders()->exists()?0:($this->orders()->where('status',"Delivered")->sum('amount')*100)/($this->orders()->sum('amount')+$this->amount),
+        );
+    }
+
 }
 

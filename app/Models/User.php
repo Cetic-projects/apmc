@@ -2,14 +2,16 @@
 
 namespace App\Models;
 
+use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Laravel\Sanctum\HasApiTokens;
 use Spatie\Permission\Traits\HasRoles;
 use Illuminate\Notifications\Notifiable;
-use Illuminate\Contracts\Auth\MustVerifyEmail;
+
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Spatie\MediaLibrary\HasMedia;
 use Spatie\MediaLibrary\InteractsWithMedia;
+
 
 
 class User extends Authenticatable implements HasMedia
@@ -106,6 +108,10 @@ class User extends Authenticatable implements HasMedia
     }
     public function city(){
         return $this->belongsTo(City::class);
+    }
+    public  function orders()
+    {
+        return $this->hasMany(Order::class);
     }
 
 

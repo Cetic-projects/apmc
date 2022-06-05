@@ -17,6 +17,7 @@ return new class extends Migration
             $table->id();
             $table->integer('banner_id');
             $table->integer('position_id');
+
             $table->timestamps();
         });
     }
