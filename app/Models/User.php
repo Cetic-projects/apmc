@@ -26,7 +26,7 @@ class User extends Authenticatable implements HasMedia
      * @var array<int, string>
      */
     protected $fillable = [
-        'first_name','last_name', 'city_id', 'email', 'password', 'phone', 'address'
+        'name', 'city_id', 'email', 'password', 'phone', 'address'
     ];
 
     /**
@@ -58,8 +58,7 @@ class User extends Authenticatable implements HasMedia
     {
         $common = [
             'email'      =>"required|email|unique:users,email,$id",
-            'first_name' =>"required|string|min:4",
-            'last_name'  =>"required|string|min:4",
+            'name' =>"required|string|min:4",
             'phone'      =>'nullable|regex:/^([0-9\s\-\+\(\)]*)$/|min:10',
             'address'    =>'nullable|string',
             'password'   =>'nullable|confirmed',
@@ -123,6 +122,6 @@ class User extends Authenticatable implements HasMedia
 
     public function getRolesStrAttribute()
     {
-        return $this->roles->pluck('name')->implode(', ');
+        return $this->roles->pluck('name');
     }
 }

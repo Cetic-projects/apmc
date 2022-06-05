@@ -19,8 +19,7 @@ class UserFactory extends Factory
     {
         return [
             'city_id' => $this->faker->randomDigit(),
-            'first_name' => $this->faker->firstName(),
-            'last_name' => $this->faker->lastName(),
+            'name' => $this->faker->name(),
             'email' => $this->faker->unique()->safeEmail(),
             'email_verified_at' => now(),
             'address' => $this->faker->address(),
