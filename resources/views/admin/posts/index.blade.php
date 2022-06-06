@@ -35,6 +35,7 @@
                         <th>{{trans('app.price')}}</th>
                         <th>{{trans('app.nb_stars')}}</th>
                         <th>{{trans('app.video_url')}}</th>
+                        <th>Sales percentage</th>
                         <th>{{trans('app.actions')}}</th>
                     </tr>
                 </thead>
@@ -47,6 +48,7 @@
                         <th>{{trans('app.price')}}</th>
                         <th>{{trans('app.nb_stars')}}</th>
                         <th>{{trans('app.video_url')}}</th>
+                        <th>Sales percentage</th>
                         <th>{{trans('app.actions')}}</th>
                     </tr>
                 </tfoot>
@@ -68,8 +70,21 @@
                                 @endif
                             </td>
                             <td>{{ $item->price }}</td>
-                            <td>{{ $item->nb_stars }}</td>
+                            <td>{{ $item->rating??0 }}</td>
                             <td>{{ $item->video_url }}</td>
+                            <td >
+                                <div class="row d-flex align-items-center mx-auto">
+                                    <div class="col-12 col-xl-2 px-0">
+                                        <div class="small fw-bold">{{round($item->sales_percentage,0) }}%</div>
+                                    </div>
+                                    <div class="col-12 col-xl-10 px-0 px-xl-1">
+                                        <div class="progress progress-lg mb-0" >
+                                            <div  class="progress-bar bg-dark" role="progressbar" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100" style="width: {{ round($item->sales_percentage,0) }}%;"></div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </td>
 
 
                                 <td>

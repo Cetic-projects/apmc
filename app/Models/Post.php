@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Models\Scopes\AmountScope;
 use App\Traits\Dates;
 use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -20,6 +21,12 @@ class Post extends Model implements HasMedia
         'export_price', 'promotional_price', 'begin_promotional_date', 'end_promotional_date', 'slug',
         'nb_stars', 'video_url' ,'tags'
     ];
+    protected static function boot()
+    {
+        parent::boot();
+
+        static::addGlobalScope(new AmountScope);
+    }
 
 
     /*
