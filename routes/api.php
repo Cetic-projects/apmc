@@ -58,6 +58,11 @@ Route::group(['prefix' => "v1"], function () {
     Route::get("top-10-posts",[PostController::class,'topTen']);
     Route::get("category/{id}/posts",[PostController::class,'byCategory']);
     Route::get("promotinal-posts",[PostController::class,'promotinal']);
+    Route::get("10-newest-posts",[PostController::class,'TenNewestPosts']);
+    Route::get("best-selling-posts",[PostController::class,'bestSellingPosts']);
+    Route::get("posts-by-price-min={min}&max={max}",[PostController::class,'filterByPrice']);
+    Route::get("sort-posts-by-desc",[PostController::class,'sortPostsByDesc']);
+    Route::get("sort_posts_by_asc",[PostController::class,'sortPostsByAsc']);
     //reviews
     Route::get("post/{id}/reviews",[ReviewController::class,'show']);
     Route::delete('review/{id}/delete',[ReviewController::class,'destroy']);

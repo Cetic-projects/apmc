@@ -42,7 +42,7 @@ class BannerController extends Controller
      */
     public function show($id)
     {
-        $position=Position::where('id',$id)->has('banners')->first();
+        $position=Position::where('id',$id)->where('is_active',1)->has('banners')->first();
         if(is_null($position)){
             $banner=null;
         }else{
