@@ -38,6 +38,9 @@ Route::group(['prefix' => ADMIN, 'as' => ADMIN . '.', 'middleware' => ['auth', '
     Route::post('posts/grouped-action', 'PostController@groupedAction')->name('posts.grouped-action');
     Route::resource('posts', 'PostController');
 
+    Route::post('orders/grouped-action', 'OrderController@groupedAction')->name('orders.grouped-action');
+    Route::resource('orders', 'OrderController');
+
     Route::resource('banners', 'BannerController');
     Route::post('banners/grouped-action', 'BannerController@groupedAction')->name('banners.grouped-action');
 

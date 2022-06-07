@@ -21,7 +21,7 @@ class Order extends Model
     public static function rules($update = false, $id=null)
     {
         return [
-            'name' => 'required',
+            'amount'=>'required',
         ];
     }
 

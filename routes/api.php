@@ -13,7 +13,6 @@ use App\Http\Controllers\Api\ReviewController;
 use App\Http\Controllers\API\VerificationEmailController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\API\RegisterController;
 
 
 /*
@@ -32,11 +31,9 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 Route::group(['prefix' => "v1"], function () {
-<<<<<<< HEAD
 
     Route::post('/register', [RegisterController::class, 'register']);
     Route::post('/login', [LoginController::class, 'login']);
-=======
     //user
     Route::get('/users/{id}/user', [ClientController::class, 'edit']);
     Route::post('/login', [LoginController::class, 'login']);
@@ -73,6 +70,5 @@ Route::group(['prefix' => "v1"], function () {
     Route::get('categories',[CategoryController::class,'allCategories']);
     //position/1/banner
     Route::get('position/{id}/banner',[BannerController::class,'show']);
->>>>>>> a28bd6d16c81853d71a1f9e96364d30d429aece4
 
 });

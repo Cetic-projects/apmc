@@ -38,6 +38,15 @@
     </a>
 </li>
 
+<li class="nav-item">
+    <a class="sidebar-link {{ Str::startsWith($route, ADMIN . '.orders') ? 'actived' : '' }}" href="{{ route(ADMIN . '.orders.index') }}">
+        <span class="icon-holder">
+            <i class='c-indigo-500 fa fa-shopping-cart'></i>
+        </span>
+        <span class="title">{{ trans('app.orders') }}</span>
+    </a>
+</li>
+
 
 <li class="nav-item">
     <a class="sidebar-link {{ Str::startsWith($route, ADMIN . '.banners') ? 'actived' : '' }}" href="{{ route(ADMIN . '.banners.index') }}">

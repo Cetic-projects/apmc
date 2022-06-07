@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 return [
 
@@ -67,6 +67,8 @@ return [
     'permessions'=>"Permissions",
     'dashboard'=>'Dashboard',
     'positions'=>'Positions',
+    'orders'=>'Orders',
+
 
 
     'branches'=>'Branches',
@@ -97,6 +99,8 @@ return [
     'in_menu'=>'In menu',
     'description'=>'Description',
     'slug'=>'Slug',
+    'amount'=>'Amount',
+    'trait_at'=>'Trait at',
 
 
     'quantity'=>'Quantity',

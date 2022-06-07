@@ -74,8 +74,7 @@ class DatabaseSeeder extends Seeder
                     "status"=>$faker->randomElement($status),
                     "post_id"=>$post->id,
                     "user_id"=>$faker->randomElement(User::pluck('id')),
-
-
+                    "trait_at"=>$faker->date(),
                 ]
                 );
         }
