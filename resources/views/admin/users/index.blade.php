@@ -21,8 +21,7 @@
                         <th>
                             <input type="checkbox" id="CheckAll">
                         </th>
-                        <th>First name</th>
-                        <th>Last name</th>
+                        <th>Name</th>
                         <th>{{ trans('app.role') }}</th>
                         <th>Email</th>
                         <th>Phone number</th>
@@ -34,8 +33,7 @@
                 <tfoot>
                     <tr>
                         <th></th>
-                        <th>First name</th>
-                        <th>Last name</th>
+                        <th>Name</th>
                         <th>{{ trans('app.role') }}</th>
                         <th>Email</th>
                         <th>Phone number</th>
@@ -56,10 +54,14 @@
                                             <i class="fa fa-ban text-danger" aria-hidden="true"></i>
                                 @endif
                             </td>
-                            <td><a href="{{ route(ADMIN . '.users.edit', $item->id) }}">{{ $item->first_name }}</a></td>
-                            <td>{{ $item->last_name }}</td>
+                            <td><a href="{{ route(ADMIN . '.users.edit', $item->id) }}">{{ $item->name }}</a></td>
                             <td>
-                                <label class="badge badge-success">{{ $item->RolesStr}}</label>
+
+                                @foreach ($item->RolesStr as $roleName )
+                                    <label class="badge badge-success">{{$roleName }}</label>
+                                @endforeach
+
+
                             </td>
                             <td>{{ $item->email }}</td>
                             <td>{{ $item->phone }}</td>

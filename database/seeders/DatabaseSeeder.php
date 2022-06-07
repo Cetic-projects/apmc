@@ -49,7 +49,7 @@ class DatabaseSeeder extends Seeder
 
        // Currency::factory()->count(5)->create();
         City::factory()->count(5)->create();
-        User::factory()->create(['first_name'=>'enadir','email'=> 'test@example.com'])->assignRole('super_admin');
+        User::factory()->create(['name'=>'enadir','email'=> 'test@example.com'])->assignRole('super_admin');
 
 
         $users_id= User::pluck('id');
