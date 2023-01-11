@@ -67,6 +67,7 @@ return [
     'permessions'=>"Permissions",
     'dashboard'=>'Dashboard',
     'positions'=>'Positions',
+    'unites'=>'Unites',
     'orders'=>'Orders',
 
 

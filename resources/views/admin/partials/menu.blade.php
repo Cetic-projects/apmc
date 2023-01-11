@@ -65,3 +65,12 @@
         <span class="title">{{trans('app.positions')}}</span>
     </a>
 </li>
+
+<li class="nav-item">
+    <a class="sidebar-link {{ Str::startsWith($route, ADMIN . '.unites') ? 'actived' : '' }}" href="{{ route(ADMIN . '.unites.index') }}">
+        <span class="icon-holder">
+            <i class='c-pink-500 ti-location-arrow'></i>
+        </span>
+        <span class="title">{{trans('app.unites')}}</span>
+    </a>
+</li>

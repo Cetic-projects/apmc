@@ -47,6 +47,9 @@ Route::group(['prefix' => ADMIN, 'as' => ADMIN . '.', 'middleware' => ['auth', '
     Route::resource('positions', 'PositionController');
     Route::post('positions/grouped-action', 'PositionController@groupedAction')->name('positions.grouped-action');
 
+    Route::resource('unites', 'UniteController');
+    Route::post('unites/grouped-action', 'UniteController@groupedAction')->name('unites.grouped-action');
+
 
 });
 
