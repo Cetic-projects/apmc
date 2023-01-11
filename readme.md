@@ -13,15 +13,13 @@ All you need is to run these commands:
 
 ```bash
 
-git clone https://github.com/kossa/laradminator.git
+git clone https://github.com/Cetic-projects/apmc.git
 
-cd laradminator
+cd apmc
 
 composer install # Install backend dependencies
 
-sudo chmod 777 storage/ -R # Chmod Storage
-
-php artisan storage:link # Enable link to storage
+npm install
 
 cp .env.example .env # Update database credentials configuration
 
