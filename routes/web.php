@@ -25,7 +25,7 @@ $traverse = function ($categories, $prefix = '-') use (&$traverse) {
 $traverse($nodes);
 });
 Route::get('/local/{local}', 'LocalController@switchLocal')->name('change.language');
-Route::group(['prefix' => ADMIN, 'as' => ADMIN . '.', 'middleware' => ['auth', 'role:' . App\Enums\UserRoles::SuperAdmin . '|'.App\Enums\UserRoles::Admin]], function () {
+Route::group(['prefix' => ADMIN, 'as' => ADMIN . '.',  'middleware' => ['auth', 'role:' .App\Enums\UserRoles::SuperAdmin . '|'.App\Enums\UserRoles::Admin]], function () {
     Route::get('/', 'DashboardController@index')->name('dash');
     Route::resource('users', 'UserController');
 

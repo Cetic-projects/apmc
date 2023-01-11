@@ -131,11 +131,9 @@ Properties relative to desktop screen
     padding-left: 0px;
     padding-right: 70px;
   }
-
   .is-collapsed .page-container {
     padding-right: 280px;
   }
-
   .header .header-container .nav-right .dropdown-menu > li > a {
     display: flex !important;
     align-items: center;
@@ -145,30 +143,24 @@ Properties relative to desktop screen
   .header .header-container .nav-left {
     padding: 0 15px 0 0;
   }
-
   .page-container {
     padding-right: 0;
   }
-
   .is-collapsed .page-container {
     padding-right: 0;
   }
-
   .is-collapsed .sidebar {
     right: 0;
     left: inherit;
   }
-
   .sidebar-logo .mobile-toggle a {
     transform: rotate(180deg);
     margin: 10px;
   }
-
   .sidebar {
     right: -280px;
     left: inherit;
   }
-
   .nav-tabs .nav-link {
     padding: 5px 10px;
   }
