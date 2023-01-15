@@ -68,6 +68,9 @@ class Post extends Model implements HasMedia
     public function messages(){
         return $this->hasMany(Message::class);
     }
+    public function unites(){
+        return $this->belongsToMany(Unite::class,'unite_post');
+    }
     public function category(){
         return $this->belongsTo(Category::class);
     }

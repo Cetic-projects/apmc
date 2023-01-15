@@ -62,7 +62,7 @@ class UniteController extends Controller
      * @param  \App\Models\unite  $unite
      * @return \Illuminate\Http\Response
      */
-    public function edit(unite $unite)
+    public function edit($id)
     {
         $item = Unite::findOrFail($id);
 
@@ -76,7 +76,7 @@ class UniteController extends Controller
      * @param  \App\Models\unite  $unite
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, unite $unite)
+    public function update(Request $request, $id)
     {
         $this->validate($request, Unite::rules(true, $id));
 
@@ -95,7 +95,7 @@ class UniteController extends Controller
      * @param  \App\Models\unite  $unite
      * @return \Illuminate\Http\Response
      */
-    public function destroy(unite $unite)
+    public function destroy($id)
     {
         Unite::destroy($id);
         return back()->withSuccess(trans('app.success_destroy'));
@@ -108,7 +108,7 @@ class UniteController extends Controller
         $ids = request('ids', []);
         $unites = Unite::whereIn('id', $ids)->get();
 
-        $unites->each(fn ($position) => $position->delete());
+        $unites->each(fn ($unite) => $unite->delete());
         return back()->withSucces('unites have been deleted');
         # code...
     }

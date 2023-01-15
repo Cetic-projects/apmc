@@ -35,6 +35,9 @@ class unite extends Model
     | Relations
     |------------------------------------------------------------------------------------
     */
+    public function posts(){
+        return $this->belongsToMany(Post::class,'unite_post');
+    }
 
     /*
     |------------------------------------------------------------------------------------
