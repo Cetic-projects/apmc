@@ -68,6 +68,8 @@ return [
     'dashboard'=>'Dashboard',
     'positions'=>'Positions',
     'unites'=>'Unites',
+    'poles'=>'Poles',
+
     'orders'=>'Orders',
 
 

@@ -12,6 +12,7 @@ use App\Models\Message;
 use App\Models\Order;
 use App\Models\Position;
 use App\Models\Unite;
+use App\Models\Pole;
 use App\Models\Review;
 use App\Models\User;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
@@ -51,6 +52,7 @@ class DatabaseSeeder extends Seeder
        // Currency::factory()->count(5)->create();
         City::factory()->count(5)->create();
         Unite::factory()->count(5)->create();
+        Pole::factory()->count(5)->create();
         User::factory()->create(['name'=>'enadir','email'=> 'test@example.com'])->assignRole('super_admin');
 
 

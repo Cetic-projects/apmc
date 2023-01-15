@@ -50,6 +50,9 @@ Route::group(['prefix' => ADMIN, 'as' => ADMIN . '.', 'middleware' => ['auth', '
     Route::resource('unites', 'UniteController');
     Route::post('unites/grouped-action', 'UniteController@groupedAction')->name('unites.grouped-action');
 
+    Route::resource('poles', 'PoleController');
+    Route::post('poles/grouped-action', 'PoleController@groupedAction')->name('poles.grouped-action');
+
 
 });
 
