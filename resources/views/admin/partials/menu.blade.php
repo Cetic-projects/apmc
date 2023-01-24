@@ -34,11 +34,11 @@
         <span class="icon-holder">
             <i class='c-indigo-500 fa fa-shopping-cart'></i>
         </span>
-        <span class="title">{{ trans('app.posts') }}</span>
+        <span class="title">{{ trans('app.products') }}</span>
     </a>
 </li>
 
-<li class="nav-item">
+<!-- <li class="nav-item">
     <a class="sidebar-link {{ Str::startsWith($route, ADMIN . '.orders') ? 'actived' : '' }}" href="{{ route(ADMIN . '.orders.index') }}">
         <span class="icon-holder">
             <i class='c-indigo-500 fa fa-shopping-cart'></i>
@@ -64,7 +64,7 @@
         </span>
         <span class="title">{{trans('app.positions')}}</span>
     </a>
-</li>
+</li>-->
 
 <li class="nav-item">
     <a class="sidebar-link {{ Str::startsWith($route, ADMIN . '.unites') ? 'actived' : '' }}" href="{{ route(ADMIN . '.unites.index') }}">

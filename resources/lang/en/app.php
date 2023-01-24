@@ -69,7 +69,7 @@ return [
     'positions'=>'Positions',
     'unites'=>'Unites',
     'poles'=>'Poles',
-
+    'products'=>'Products',
     'orders'=>'Orders',
 
 
