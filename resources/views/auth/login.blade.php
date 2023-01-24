@@ -1,6 +1,4 @@
-@extends('layouts.app')
-
-@section('content')
+<x-login-layout>
 
     <h4 class="fw-300 c-grey-900 mB-40">Login</h4>
     <form class="form-horizontal" method="POST" action="{{ route('login') }}">
@@ -55,4 +53,4 @@
         </div>
     </form>
 
-@endsection
+</x-login-layout>

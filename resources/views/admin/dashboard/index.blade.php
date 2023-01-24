@@ -1,6 +1,7 @@
-@extends('admin.default')
+<x-admin-layout>
 
-@section('content')
+    <x-slot name="header">
+    </x-slot>
 
     <div class="row gap-20 masonry pos-r">
         <div class="masonry-sizer col-md-6"></div>
@@ -575,4 +576,4 @@
         </div>
     </div>
 
-@endsection
+</x-admin-layout>

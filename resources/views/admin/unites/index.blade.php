@@ -1,27 +1,27 @@
-@extends('admin.default')
-@section('page-header')
-{{trans('app.unites')}} <small>{{ trans('app.manage') }}</small>
-@endsection
+<x-admin-layout>
 
-@section('content')
-<div class="mB-20">
-    <div class="row mB-40">
-            <div class="mB-20">
-                <a href="{{ route(ADMIN . '.unites.create') }}" class="btn btn-info">
-                    {{ trans('app.add_button') }}
-                </a>
+    <x-slot name="header">
+        <div class="mB-20">
+            <div class="row mB-40">
+                <div class="mB-20">
+                    <a href="{{ route(ADMIN . '.categories.create') }}" class="btn btn-info">
+                        {{ trans('app.add_button') }}
+                    </a>
+                </div>
+
+                <div class="col-sm-8">
+                    {!! Form::open([
+                        'id' => 'groupedAction',
+                        'class' => 'form-inline',
+                        'route' => ADMIN . '.categories.grouped-action'
+                    ]) !!}
+                        <button class="btn btn-danger">Delete Selected</button>
+                    {!! Form::close() !!}
+                </div>
             </div>
-            <div class="col-sm-8">
-                {!! Form::open([
-                    'id' => 'groupedAction',
-                    'class' => 'form-inline',
-                    'route' => ADMIN . '.unites.grouped-action'
-                ]) !!}
-                <button class="btn btn-danger">Delete Selected</button>
-                {!! Form::close() !!}
-            </div>
-    </div>
-</div>
+        </div>
+    </x-slot>
+
     <div class="bgc-white bd bdrs-3 p-20 mB-20">
         <div class="table-responsive">
             <table id="dataTable" class="table table-striped table-bordered" cellspacing="0" width="100%">
@@ -97,4 +97,4 @@
         </div>
     </div>
 
-@endsection
+</x-admin-layout>

@@ -16,7 +16,7 @@
       </div>
     </div>
     <div class="col-12 col-md-4 peer pX-40 pY-80 h-100 bgc-white scrollable pos-r" style='min-width: 320px;'>
-      @yield('content')
+      {{ $slot }}
     </div>
   </div>
 

@@ -46,7 +46,7 @@ class DatabaseSeeder extends Seeder
             "price"=>$faker->numberBetween(100,10000),
 
         ]);
-    }
+      }
 
 
        // Currency::factory()->count(5)->create();

@@ -1,17 +1,14 @@
-@extends('admin.default')
+<x-admin-layout>
 
-@section('page-header')
-    Users <small>{{ trans('app.manage') }}</small>
-@endsection
+    <x-slot name="header">
+        Users <small>{{ trans('app.manage') }}</small>
 
-@section('content')
-
-    <div class="mB-20">
+        <div class="mB-20">
         <a href="{{ route(ADMIN . '.users.create') }}" class="btn btn-info">
             {{ trans('app.add_button') }}
         </a>
     </div>
-
+    </x-slot>
 
     <div class="bgc-white bd bdrs-3 p-20 mB-20">
         <div class="table-responsive">
@@ -97,4 +94,5 @@
         </div>
     </div>
 
-@endsection
+
+</x-admin-layout>
