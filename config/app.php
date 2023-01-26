@@ -165,6 +165,7 @@ return [
         Illuminate\View\ViewServiceProvider::class,
         Spatie\Permission\PermissionServiceProvider::class,
         BenSampo\Enum\EnumServiceProvider::class,
+        
 
 
         /*
@@ -196,5 +197,8 @@ return [
     'aliases' => Facade::defaultAliases()->merge([
         // ...
     ])->toArray(),
+
+    'Vite' => \Illuminate\Support\Facades\Vite::class,
+
 
 ];
