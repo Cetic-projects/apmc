@@ -1,6 +1,7 @@
-@import 'breakpoints';
-@import 'fonts';
-@import 'brandColors';
-@import 'materialColors';
-@import 'baseColors';
-@import 'borders';
+@use 'materialColors' as *;
+$theme-map: ();
+@forward 'breakpoints';
+@forward 'fonts';
+@forward 'brandColors';
+@forward 'baseColors';
+@forward 'borders';

@@ -12,8 +12,9 @@ export default defineConfig({
           'resources/css/app.css',
           'resources/js/app.js',
           'resources/sass/app.scss',
-          'resources/sass/rtl.scss',
-          
+          'public/css/app.css',
+
+
       ]),
       {
         name: 'blade',
@@ -34,7 +35,7 @@ export default defineConfig({
           replacement: '$1',
 
 
-      }   
+      }
     }
-  
+
 });

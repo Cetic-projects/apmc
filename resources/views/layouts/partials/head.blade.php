@@ -8,7 +8,11 @@
     <title>{{ config('app.name', 'Laravel') }}</title>
 
     <!-- Styles -->
-    <link href="{{ mix('/css/app.css') }}" rel="stylesheet">
+    @vite('resources/sass/app.scss')
+    @vite('public/css/app.css')
+
+
+
     {{-- <link href="{{ mix('/css/rtl.css') }}" rel="stylesheet"> --}}
 
     <!-- Global css content -->

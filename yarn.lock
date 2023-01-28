@@ -12,9 +12,9 @@
   "resolved" "https://registry.npmjs.org/@babel/standalone/-/standalone-7.20.13.tgz"
   "version" "7.20.13"
 
-"@esbuild/win32-x64@0.16.17":
-  "integrity" "sha512-y+EHuSchhL7FjHgvQL/0fnnFmO4T1bhvWANX6gcnqTjtnKWbTvUMCpGnv2+t+31d7RzyEAYAd4u2fnIhHL6N/Q=="
-  "resolved" "https://registry.npmjs.org/@esbuild/win32-x64/-/win32-x64-0.16.17.tgz"
+"@esbuild/darwin-x64@0.16.17":
+  "integrity" "sha512-2By45OBHulkd9Svy5IOCZt376Aa2oOkiE9QWUK9fe6Tb+WDr8hXL3dpqi+DeLiMed8tVXspzsTAvd0jUl96wmg=="
+  "resolved" "https://registry.npmjs.org/@esbuild/darwin-x64/-/darwin-x64-0.16.17.tgz"
   "version" "0.16.17"
 
 "@jridgewell/gen-mapping@^0.3.0":
@@ -507,7 +507,7 @@
   "resolved" "https://registry.npmjs.org/bootstrap-v4-rtl/-/bootstrap-v4-rtl-4.6.0-3.tgz"
   "version" "4.6.0-3"
 
-"bootstrap@^4.6.2":
+"bootstrap@4.6.2":
   "integrity" "sha512-51Bbp/Uxr9aTuy6ca/8FbFloBUJZLHwnhTcnjIeRn2suQWsWzcuJhGjKDB5eppVte/8oCdOL3VuwxvZDUggwGQ=="
   "resolved" "https://registry.npmjs.org/bootstrap/-/bootstrap-4.6.2.tgz"
   "version" "4.6.2"
@@ -1194,6 +1194,11 @@
     "graceful-fs" "^4.1.2"
     "jsonfile" "^3.0.0"
     "universalify" "^0.1.0"
+
+"fsevents@~2.3.2":
+  "integrity" "sha512-xiqMQR4xAeHTuB9uWm+fFRcIOgKBMiOBP+eXiyT7jsgVCq1bkVygt00oASowB7EdtpOHaaPgKt812P9ab+DDKA=="
+  "resolved" "https://registry.npmjs.org/fsevents/-/fsevents-2.3.2.tgz"
+  "version" "2.3.2"
 
 "fullcalendar@^5.9.0":
   "integrity" "sha512-SgqiMEA+lWLyEd2jEwtIxdfx41j2CZr4KK00D2Gepj1MnGOjaEi13athnU6xvqMQXXjgJNj+vmlUP69QiuGncQ=="
