@@ -9,7 +9,7 @@
 
     <!-- Styles -->
     @vite('resources/sass/app.scss')
-    @vite('public/css/app.css')
+    @vite('resources/js/app.js')
 
 
 

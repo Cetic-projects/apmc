@@ -14,6 +14,7 @@
         <!-- #Main ============================ -->
         <div class="page-container">
             <!-- ### $Topbar ### -->
+            @include('admin.partials.topbar')
 
             <!-- ### $App Screen Content ### -->
             <main class='main-content bgc-grey-100'>

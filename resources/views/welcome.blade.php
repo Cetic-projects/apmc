@@ -202,7 +202,6 @@
         x-transition:leave-end="opacity-0 scale-90"
         class=" flex flex-col font-normal text-xl w-full items-center  text-white rounded-lg">
           <div class="absolute w-full ">
-            <img class="h-screen w-full object-cover"  :src="`assets/images/slider/${slide.image}`" alt="">
             <img class="h-screen w-full object-cover"  :src="`{{ Vite::asset('resources/images/slider/${slide.image}') }}`" alt="">
             <img src="{{ Vite::asset('resources/images/about/image-1.jpg') }}" alt="" class="w-full rounded-2xl" />
 

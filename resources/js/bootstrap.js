@@ -1,13 +1,14 @@
 import _ from 'lodash';
 window._ = _;
 
+
+
+import select2 from 'select2';
+select2();
+
 import $ from 'jquery';
 window.jQuery = window.$ = $
 
-import Alpine from 'alpinejs';
-
-window.Alpine = Alpine;
-Alpine.start();
 /**
  * We'll load jQuery and the Bootstrap jQuery plugin which provides support
  * for JavaScript based Bootstrap features such as modals and tabs. This
@@ -62,7 +63,7 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 //     encrypted: true
 // });
 
-
+import 'bootstrap';
 import './masonry';
 import './charts';
 import './popover';
@@ -78,6 +79,5 @@ import './email';
 // import './fullcalendar';
 import './googleMaps';
 import './utils';
-
 import './sweetalert2';
 import './select2';

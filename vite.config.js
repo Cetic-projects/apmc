@@ -9,11 +9,8 @@ export default defineConfig({
 },
     plugins: [
         laravel([
-          'resources/css/app.css',
           'resources/js/app.js',
           'resources/sass/app.scss',
-          'public/css/app.css',
-
 
       ]),
       {
@@ -33,8 +30,6 @@ export default defineConfig({
           '@': '/resources/sass',
           find: /^~(.*)$/,
           replacement: '$1',
-
-
       }
     }
 
