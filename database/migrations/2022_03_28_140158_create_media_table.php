@@ -8,6 +8,7 @@ class CreateMediaTable extends Migration
 {
     public function up()
     {
+
         Schema::create('media', function (Blueprint $table) {
             $table->bigIncrements('id');
 
@@ -28,5 +29,14 @@ class CreateMediaTable extends Migration
 
             $table->nullableTimestamps();
         });
+    }
+        /**
+     * Reverse the migrations.
+     *
+     * @return void
+     */
+    public function down()
+    {
+        Schema::dropIfExists('media');
     }
 }

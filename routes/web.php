@@ -59,3 +59,6 @@ Route::group(['prefix' => ADMIN, 'as' => ADMIN . '.', 'middleware' => ['auth', '
 Route::get('/', function () {
     return view('welcome');
 });
+Route::get('/2', function () {
+    return view('welcome2');
+});

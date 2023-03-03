@@ -10,6 +10,8 @@
     <!-- Styles -->
     @vite('resources/sass/app.scss')
     @vite('resources/js/app.js')
+    @vite('resources/js/bootstrap.js')
+
 
 
 

@@ -1,8 +1,6 @@
 import _ from 'lodash';
 window._ = _;
 
-
-
 import select2 from 'select2';
 select2();
 

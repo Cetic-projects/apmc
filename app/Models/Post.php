@@ -41,15 +41,8 @@ class Post extends Model implements HasMedia
             'title' => 'required',
             'description' =>"required",
             'price' =>"required|integer",
-            'is_featured'  =>"nullable|boolean",
-            'is_negociable'      =>"nullable|boolean",
-            'export_price'    =>'nullable|integer',
-            'promotional_price'   =>'nullable|integer',
-            'begin_promotional_date'   =>'nullable|date',
-            'end_promotional_date'   =>'nullable|date|after:begin_promotional_date',
             'slug'   =>'nullable',
-            'nb_stars'   =>'nullable|integer',
-            'video_url'   =>'nullable|regex:/^(https?:\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})([\/\w \.-]*)*\/?$/',
+            'image'   =>'required|string',
             'tags'   =>'nullable',
 
 

@@ -23,19 +23,11 @@ class PostFactory extends Factory
     {
         return [
             'title' => $this->faker->title(),
-            'description' => $this->faker->text(),
+            'description' => $this->faker->text(150),
             'price' => $this->faker->randomDigit(),
-            'price' => $this->faker->randomFloat(null, 1, 900),
-            'is_featured' => $this->faker->boolean(),
-            'is_negociable' => $this->faker->boolean(),
-            'export_price' => $this->faker->randomDigit(),
-            'promotional_price' => $this->faker->randomDigit(),
-            'begin_promotional_date' => $this->faker->date(),
-            'end_promotional_date' => $this->faker->date(),
             'slug' => $this->faker->slug(),
-            'nb_stars' => $this->faker->randomDigit(0,5),
-            'video_url' => $this->faker->url(),
-            'tags' => $this->faker->text(),
+            'image' => $this->faker->imageUrl(360, 360, 'menu', true, 'plat'),
+            'tags' => $this->faker->text(40),
         ];
     }
 }

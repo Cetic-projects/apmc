@@ -50,6 +50,7 @@
     "dependencies": {
         "@icon/themify-icons": "^1.0.1-alpha.3",
         "alpinejs": "^3.11.1",
+        "daisyui": "^2.51.3",
         "font-awesome": "^4.7.0",
         "themify-icons": "^1.0.0"
     }

@@ -5,7 +5,14 @@ module.exports = {
     "./resources/**/*.js",
   ],
   theme: {
-    extend: {},
+    extend: {
+      fontFamily: {
+        sans: ['Inter', 'sans-serif'],
+      },
+      colors: {
+        primary: '#1f4394', // Replace with your desired color code
+      },
+    },
   },
-  plugins: [],
+  plugins: [require("daisyui")],
 }

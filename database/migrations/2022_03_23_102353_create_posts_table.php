@@ -20,15 +20,8 @@ return new class extends Migration{
             $table->integer('amount')->default(1);
             $table->string('description')->nullable();
             $table->unsignedInteger('price')->nullable();
-            $table->boolean('is_featured')->nullable();
-            $table->boolean('is_negociable')->nullable();
-            $table->unsignedInteger('export_price')->nullable();
-            $table->unsignedInteger('promotional_price')->nullable();
-            $table->dateTime('begin_promotional_date')->nullable();
-            $table->dateTime('end_promotional_date')->nullable();
             $table->string('slug')->nullable();
-            $table->integer('nb_stars')->nullable();
-            $table->string('video_url')->nullable();
+            $table->string('image')->nullable();
             $table->string('tags')->nullable();
             $table->timestamps();
         });

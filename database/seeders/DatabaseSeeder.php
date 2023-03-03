@@ -38,17 +38,9 @@ class DatabaseSeeder extends Seeder
         });
         //Message::factory()->count(5)->create();
         Category::factory()->count(5)->create();
-       for($i=0;$i<30;$i++){
-        Post::create([
-            "title"=>$faker->name(),
-            "category_id"=>$faker->randomElement(Category::pluck('id')),
-            "description"=>$faker->sentence(10),
-            "price"=>$faker->numberBetween(100,10000),
+        Post::factory()->count(5)->create();
 
-        ]);
-      }
-
-
+   
        // Currency::factory()->count(5)->create();
         City::factory()->count(5)->create();
         Unite::factory()->count(5)->create();
